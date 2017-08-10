@@ -21,17 +21,17 @@
 
 int main(int argc, string argv[])
 {
-    // TODO: comment me
+    // Checks the command line argument for either 1 or 2 arguments.  Exits with error code 1 and prints error message if not met.
     if (argc != 2 && argc != 3)
     {
         printf("Usage: ./generate n [s]\n");
         return 1;
     }
 
-    // TODO: comment me
+    // atoi function converts the 1 command line argument, number of pseudorandom numbers to generate, from a string to an integer
     int n = atoi(argv[1]);
 
-    // TODO: comment me
+    // If there are 2 command line arguments present, use the 2nd argument as a seed [s] for drand48
     if (argc == 3)
     {
         srand48((long) atoi(argv[2]));
