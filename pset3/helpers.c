@@ -15,6 +15,9 @@ bool search(int value, int values[], int n)
 	int lower = 0;
 	int upper = n;
 	
+	if (n < 0)
+		return false;
+	
 	while(true)
 	{
 		if (upper < lower)
