@@ -12,37 +12,29 @@
 // O(log (n)) searching algorithm
 bool search(int value, int values[], int n)
 {
-	int lowerBound = 0;
-	int upperBound = n;
+	int lower = 0;
+	int upper = n;
 	
-	do
+	while(true)
 	{
-		if (upperBound < lowerBound)
-		{
+		if (upper < lower)
 			return false;
-		}
 		
-		int midPoint = lowerBound + (upperBound - lowerBound) / 2;
+		int middle = lower + (upper - lower) / 2;
 		
-		if (values[midPoint] < value)
-		{
-			lowerBound = midPoint + 1;
-		}
+		if (values[middle] < value)
+			lower = middle + 1;
 		
-		if (values[midPoint] > value)
-		{
-			upperBound = midPoint - 1;
-		}
+		if (values[middle] > value)
+			upper = middle - 1;
 		
-		if (values[midPoint] == value)
-		{
+		if (values[middle] == value)
 			return true;
-		}
-	} while (true);
-}
-
-
-
+	}
+}		
+		
+		
+		
 //Returns true if value is in array of n values, else false.
 // O(n) search algorithm
 /*
@@ -58,9 +50,6 @@ bool search(int value, int values[], int n)
     return false;
 }
 */
-
-
-
 
 //Sorts array of n values.
 void sort(int values[], int n)
