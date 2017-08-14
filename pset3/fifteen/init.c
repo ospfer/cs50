@@ -15,35 +15,35 @@ void init (void)
 			for (int j = 0; j < d; ++j)
 			{
 				board[i][j] = ((d*d) - 1 - reduce);
-				//printf("%.2i ", board[i][j]);
 				++reduce;
 			}
 		}
+		
 		else //Assigns values to the last row of the array
 		{
-			if (d % 2 != 0) //For the Game of Fifteen, boards that have even dimensions (e.g. 4x4, 6x6, 8x8) must swap the 1 and 2 integers.  If dimensions are odd, assign normally
-			{
-				for (int j = 0; j < d - 1; ++j)
-				{
-					board[i][j] = ((d*d) - 1 - reduce);
-					//printf("%.2i ", board[i][j]);
-					++reduce;
-				}
-			}
-			else //Handles the case for even dimensions by swapping the 1 and the 2.
+			if (d % 2 == 0) //For the Game of Fifteen, boards that have even dimensions (e.g. 4x4, 6x6, 8x8) must swap the 1 and 2 integers.  If dimensions are odd, assign normally
 			{
 				for (int j = 0; j < d - 3; ++j)
 				{
 					board[i][j] = ((d*d) - 1 - reduce);
-					//printf("%.2i ", board[i][j]);
 					++reduce;
 				}
-				board[i][d-2] = 1;
-				board[i][d-3] = 2;
-				//printf("%.2i %.2i\n", board[i][d-2], board[i][d-3]);
+				board[i][d-2] = 2;
+				board[i][d-3] = 1;
+			}
+			
+			else //Handles the case for even dimensions by swapping the 1 and the 2.
+			{
+				for (int j = 0; j < d - 1; ++j)
+				{
+					board[i][j] = ((d*d) - 1 - reduce);
+					++reduce;
+				}
 			}
 		}
 		printf("\n");		
-
 	}
 }
+
+
+
