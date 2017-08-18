@@ -160,44 +160,44 @@ void greet(void)
  */
 void init (void)
 {
-	int reduce = 0;
+    int reduce = 0;
 
-	//Assign values to board[d][d] array.
-	for (int i = 0; i < d; ++i)
-	{
-		if (i < d - 1) //The final row of the array has unique characteristics and must be handled separately.  This conditional allows the loop to assign variables up through the final - 1 row.
-		{
-			for (int j = 0; j < d; ++j)
-			{
-				board[i][j] = ((d*d) - 1 - reduce);
-				++reduce;
-			}
-		}
-		
-		else //Assigns values to the last row of the array
-		{
-			if (d % 2 == 0) //For the Game of Fifteen, boards that have even dimensions (e.g. 4x4, 6x6, 8x8) must swap the 1 and 2 integers.  If dimensions are odd, assign normally
-			{
-				for (int j = 0; j < d - 3; ++j)
-				{
-					board[i][j] = ((d*d) - 1 - reduce);
-					++reduce;
-				}
-				board[i][d-2] = 2;
-				board[i][d-3] = 1;
-			}
-			
-			else //Handles the case for even dimensions by swapping the 1 and the 2.
-			{
-				for (int j = 0; j < d - 1; ++j)
-				{
-					board[i][j] = ((d*d) - 1 - reduce);
-					++reduce;
-				}
-			}
-		}
-		printf("\n");		
-	}
+    //Assign values to board[d][d] array.
+    for (int i = 0; i < d; ++i)
+    {
+        if (i < d - 1) //The final row of the array has unique characteristics and must be handled separately.  This conditional allows the loop to assign variables up through the final - 1 row.
+        {
+            for (int j = 0; j < d; ++j)
+            {
+                board[i][j] = ((d*d) - 1 - reduce);
+                ++reduce;
+            }
+        }
+        
+        else //Assigns values to the last row of the array
+        {
+            if (d % 2 == 0) //For the Game of Fifteen, boards that have even dimensions (e.g. 4x4, 6x6, 8x8) must swap the 1 and 2 integers.  If dimensions are odd, assign normally
+            {
+                for (int j = 0; j < d - 3; ++j)
+                {
+                    board[i][j] = ((d*d) - 1 - reduce);
+                    ++reduce;
+                }
+                board[i][d-2] = 2;
+                board[i][d-3] = 1;
+            }
+            
+            else //Handles the case for even dimensions by swapping the 1 and the 2.
+            {
+                for (int j = 0; j < d - 1; ++j)
+                {
+                    board[i][j] = ((d*d) - 1 - reduce);
+                    ++reduce;
+                }
+            }
+        }
+        printf("\n");       
+    }
 }
 
 
@@ -213,31 +213,31 @@ void init (void)
 void draw(void)
 
 {
-	int i, j;
+    int i, j;
 
-	for (i = 0; i < d; ++i)
-	{
-		for (j = 0; j < d - 1; ++j)
-		{
-			if (board[i][j] != 0)
-			{
-			    printf("%.2i ", board[i][j]);
-			}
-			else
-			{
-			    printf("__ ");
-			}
-		}
-		if (board[i][j] != 0)
-		{
-		    printf("%.2i ", board[i][j]);
-		}
-		else
-		{
-		    printf("__ ");
-		}
-	printf("\n");	
-	}
+    for (i = 0; i < d; ++i)
+    {
+        for (j = 0; j < d - 1; ++j)
+        {
+            if (board[i][j] != 0)
+            {
+                printf("%.2i ", board[i][j]);
+            }
+            else
+            {
+                printf("__ ");
+            }
+        }
+        if (board[i][j] != 0)
+        {
+            printf("%.2i ", board[i][j]);
+        }
+        else
+        {
+            printf("__ ");
+        }
+    printf("\n");   
+    }
 }
 
 
@@ -299,6 +299,21 @@ bool move(int tile)
  */
 bool won(void)
 {
-    // TODO
-    return false;
+    int i, j;
+    int value = 1;
+    int max = (d*d);
+    
+    for (i = 0; i < d && value < max; ++i)
+    {
+        for (j = 0; j < d && value < max; ++j)
+        {
+            if (board[i][j] != value)
+            {
+                return false;
+            }
+            ++value;
+        }
+    }
+    
+    return true;
 }
