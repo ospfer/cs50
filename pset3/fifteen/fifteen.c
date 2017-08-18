@@ -214,7 +214,7 @@ void draw(void)
 
 {
     int i, j;
-
+    
     for (i = 0; i < d; ++i)
     {
         for (j = 0; j < d - 1; ++j)
@@ -225,7 +225,7 @@ void draw(void)
             }
             else
             {
-                printf("__ ");
+                printf("__ "); //Prints underscore characters in place of a 0, which represents the blank.
             }
         }
         if (board[i][j] != 0)
@@ -234,7 +234,7 @@ void draw(void)
         }
         else
         {
-            printf("__ ");
+            printf("__ "); //Prints underscore characters in place of a 0, which represents the blank.
         }
     printf("\n");   
     }
@@ -303,6 +303,7 @@ bool won(void)
     int value = 1;
     int max = (d*d);
     
+    //Iterates over the board and checks each value to see if they're in order. Function returns true when all values are in order
     for (i = 0; i < d && value < max; ++i)
     {
         for (j = 0; j < d && value < max; ++j)
