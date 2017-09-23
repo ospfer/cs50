@@ -1,0 +1,69 @@
+1.  stdint.h is a header file in the C standard library introduced in the C99 standard library
+section 7.18 to allow programmers to write more portable code by providing a set of typedefs
+that specify exact-width integer types, together with the defined minimum and maximum allowable
+values for each type, using macros .
+
+2.  These specify the number of bits for each typdef. uint8_t is the same as a byte and is
+shorthand for "a type of unsigned integer of length 8 bits."
+
+uint8_t = unsigned char = BYTE
+uint16_t = unsight short = DWORD
+uint32_t = unsigned int = LONG
+uint64_t = unsigned long long = WORD
+
+3.
+
+uint8_t = unsigned char = BYTE = 1 byte
+uint16_t = unsight short = DWORD = 2 bytes
+uint32_t = unsigned int = LONG = 4 bytes
+uint64_t = unsigned long long = WORD = 8 bytes
+
+4.
+
+ASCII = BM
+Decimal = 66 77
+Hexadecimal = 0x42 0x4d
+
+5.
+
+bfSize = The size, in bytes, of the bitmap file.
+biSize = The number of bytes required by the structure.
+
+6.
+
+biHeight = The height of the bitmap, in pixels.
+If biHeight is positive, the bitmap is a bottom-up DIB and its origin is the
+lower-left corner.
+If biHeight is negative, the bitmap is a top-down DIB and its origin is the
+upper-left corner.
+
+7.
+
+biBitCount = The number of bits-per-pixel. The biBitCount member of the BITMAPINFOHEADER
+structure determines the number of bits that define each pixel and the maximum number of
+colors in the bitmap. This member must be one of the following values.
+
+see for values: https://msdn.microsoft.com/en-us/library/dd183376(v=vs.85).aspx
+
+8.
+
+fopen may return NULL on line 24 if the file couldn't be opened (e.g. doesn't exist).
+fopen may return NULL on line 32 if the file couldn't be created (e.g. no write permissions).
+
+9.
+
+The third argument to fread is how many blocks, or times, to read the file. 1 means to read
+the file 1 time.
+
+
+10.
+
+3
+
+11.
+
+Allows you to move the position of the cursor in the file and resume operations at new location
+
+12.
+
+If you want to change the location of the pointer from its current location, use SEEK_CUR
